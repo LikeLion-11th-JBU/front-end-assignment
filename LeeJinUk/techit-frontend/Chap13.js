@@ -111,7 +111,7 @@ console.log(student.class);
 var teacher = newObject();
 var teacher = {};
 
-// 자료형(3)
+// 자료형 (3)
 var name1 = "김멋사";
 var name2 = "김멋사";
 
