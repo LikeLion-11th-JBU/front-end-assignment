@@ -227,7 +227,7 @@ var sentence = greeting + "\t" + myname;
 var sentence = greeting + '"' + myname;
 var sentence = greeting + '"' + myname;
 var sentence = greeting + "\\" + myname;
-// console.log(sentence);
+console.log(sentence);
 
 // 템플릿 리터럴(ES6)
 // 멀티라인 텍스트 작업 가능
