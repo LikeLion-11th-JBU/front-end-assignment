@@ -222,10 +222,10 @@ var sentence = greeting + "\n" + myname;
 // console.log(farewell + 2);
 
 // 이스케이프 시퀀스
-// var sentence = greeting + "\n" + myname;
-// var sentence = greeting + "\t" + myname;
-// var sentence = greeting + "\"" + myname;
-// var sentence = greeting + "\"" + myname;
+var sentence = greeting + "\n" + myname;
+var sentence = greeting + "\t" + myname;
+var sentence = greeting + '"' + myname;
+var sentence = greeting + '"' + myname;
 var sentence = greeting + "\\" + myname;
 // console.log(sentence);
 
