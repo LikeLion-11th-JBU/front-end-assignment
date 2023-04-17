@@ -1,0 +1,1 @@
+document.write(' <p>Javascript는 재밌어 :)</p>');
