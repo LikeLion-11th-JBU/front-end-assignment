@@ -1,0 +1,71 @@
+.hidden {
+  display: none;
+}
+
+/* 실습과 관련없는 css*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.container {
+  position: absolute;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+#clock {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-top: 30px;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+ul {
+  margin-top: 20px;
+}
+
+ul li {
+  font-size: 20px;
+  list-style-type: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+#quote {
+  margin-top: 30px;
+}
+
+#weather {
+  margin-top: 30px;
+}
