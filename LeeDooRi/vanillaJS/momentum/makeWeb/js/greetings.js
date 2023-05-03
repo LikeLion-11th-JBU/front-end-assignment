@@ -11,7 +11,7 @@ const greeting = document.querySelector('#greeting');
 
 //반복되는 변수나 요소 정리하기 
 const HIDDEN_CLASSNAME = 'hidden';
-const USERNAME_KEY = "username";
+const USERNAME_KEY = 'username';
 
 
 function onLoginSubmit(event) {
@@ -19,8 +19,9 @@ function onLoginSubmit(event) {
   // preventDefault(); : 브라우저의 기본 동작을 막아준다.
   loginForm.classList.add(HIDDEN_CLASSNAME);
   // username 저장하기
-  localStorage.setItem(USERNAME_KEY, username); 
-  paintGreetings();
+  const username = loginInput.value;
+  localStorage.setItem(USERNAME_KEY, username);
+  paintGreetings(username);
   //  HTML input 요소에서 required 와 maxlength로 대체 가능 
   //   if (username === "") {
   //     alert("Please write your name :)");
@@ -30,8 +31,7 @@ function onLoginSubmit(event) {
   // //console.log("Hello ", loginInput.value);
 }
 
-function paintGreetings() {
-  const username = localStorage.getItem(USERNAME_KEY);  
+function paintGreetings(username) {
   // argument를 없애고 함수자체에서 localStorage에 있는 값을 불러옴
   greeting.innerText = `Hello ${username}`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
@@ -42,15 +42,30 @@ const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 // localStorage에 저장된 유저이름이 없으면 #login-form 을 보여줌
 
-if( SavedUsername === null) {
+if (savedUsername === null) {
   loginForm.classList.remove(HIDDEN_CLASSNAME);
-  loginForm.addEventListener("submit", onLoginSubmit);
+  loginForm.addEventListener('submit', onLoginSubmit);
 } else {
-// show the greetings( hello )
+  // show the greetings( hello )
 
-paintGreetings();
-
+  paintGreetings(savedUsername);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
