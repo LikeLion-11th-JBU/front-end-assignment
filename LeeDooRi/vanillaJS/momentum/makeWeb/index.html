@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Momentum App</title>
+  </head>
+  <body>
+
+    <!-- <div id="login-form">
+      <input type="text" placeholder="What is your name?" />
+      <button>Log In</button>
+    </div> -->
+
+    <form id ="login-form">
+      <input
+        required
+        maxlength ="15"
+        type="text"
+        placeholder="What is your name?"
+      />
+      <input type="submit" value="Log In" /> 
+    </form>
+    <!-- form안에서 엔터나 버튼을 누르고 input이 더 존재하지 않으면 자동으로 submit된다(submit이 되면 페이지가 새로고침된다.) 
+    따라서 JS에서 preventDefalt()를 해줘야함  -->
+      <h1 id ="greeting" ></h1>
+    
+
+    <script src="./js/greetings.js"></script>
+    
+  </body>
+</html>
