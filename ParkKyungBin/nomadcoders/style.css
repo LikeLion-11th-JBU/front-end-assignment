@@ -1,0 +1,91 @@
+.hidden {
+    display: none;
+}
+
+.js-clock {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 100px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+    
+}
+
+#greeting {
+    position: absolute;
+    top: 5%;
+    left: 88%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+
+#login-form {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 15px;
+}
+
+#todo-form {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 50px;
+    color: whitesmoke;
+}
+
+#todo-form input {
+    width: 400px;
+    height: 30px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+#quote {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 30px;
+    color: black;
+}
+
+#todo-list {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    list-style: none;
+    font-weight: bold;
+}
+#todo-list li {
+    margin-bottom: 20px;
+}
+
+#weather {
+    font-weight: bold;
+    position: absolute;
+    left: 1%;
+    top: 10%
+}
+
+.container {
+	display: flex;
+	/* display: inline-flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
