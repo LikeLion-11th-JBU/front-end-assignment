@@ -21,7 +21,7 @@ function Detail() {
 
   return (
     <div>
-      {loading ? <h1>Loading...</h1> : null}
+      {loading ? <h1>Loading...</h1> : <h2>준비중</h2>}
     </div>
       
   )
