@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script> 
+   <!-- ReactJS is a JS library, it makes application more interactive UI(like engine) -->
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- React-dom is a library or package, puts all React elements on the HTML body -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js">
+    // https://babeljs.io/docs/babel-standalone
+  </script>
+  <script type="text/babel">
+
+    const root = document.getElementById("root")
+
+    const Title = () => (<h3 
+    id ="title" 
+    onMouseEnter={() => console.log("mouse enter")}>
+     Hello I'm a title{" "}
+    </h3>
+    );
+    /* const h3 = React.createElement(
+      "h3",
+       {
+        id: "title",
+        onMouseEnter: () => console.log("mouse enter"), 
+        }
+       , "Hello my name is title"
+       ); 
+ */
+      // { id: "sexy-span" , 
+      // style:{color:"tomato"} }, 
+      // "Hello My name is Span"); 
+      // span에 id , style, 내용 추가  // -> 2.2 강의
+      const Button = () => (<button style={{backgroundColor: "tomato"}}onClick={() => console.log("I'm clicked!")} >
+        Click me!</button>);
+      
+      const Container = () => (
+        <div>
+          <Title />
+          <Button />
+            </div>);
+    ReactDOM.render(<Container />,root,);
+    // render = React 요소들을 HTML로 만들어 배치한다 (유저에게 보여준다.)
+  </script>
+</html> 
+<!-- 
+리액트에서는 바닐라 자바스크립트와는 다르게 HTML에서 시작하는 것이 아닌 자바스크립트 코드로 HTML을 작성함으로 유저에게 보여질 내용을 컨트롤하고 업데이트 할 수 있다.  -->
