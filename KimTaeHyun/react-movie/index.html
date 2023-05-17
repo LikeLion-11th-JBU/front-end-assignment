@@ -7,23 +7,42 @@
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        const root = document.getElementById('root');
-        let counter = 0;
-    function countUP() {
-        counter = counter + 1;
-        render();
-    }
-    function render() {
-        ReactDOM.render(<Container/>, root);
-    }
-    function Container (){
+       function App() {
+        const [minutes, setMinutes] = React.useState(0);
+        const onChange = (event) => {
+            setMinutes(event.target.value);
+        };
+        const reset = () => {
+            setMinutes(0);
+        };
         return (
-        <div>
-            <h3>Total clicks: {counter}</h3>
-            <button onClick={countUP}>Click me</button>
-        </div>
+            <div>
+                <h1>Super Converter</h1>
+                <div>
+                    <label htmlFor="minutes">Minutes</label>
+                    <input
+                        value={minutes}
+                        id="minutes"
+                        placeholer="Minutes"
+                        type="number"
+                        onChange={onChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="hours">Hours</label>
+                    <input
+                        value={Math.round(minutes/60)}
+                        id="hours"
+                        placeholer="Hours"
+                        type="number"
+                        disabled
+                    />
+                </div>
+                <button onClick={reset}>Reset</button>
+            </div>
         );
     }
-    render();
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
 </script>
 </html>
