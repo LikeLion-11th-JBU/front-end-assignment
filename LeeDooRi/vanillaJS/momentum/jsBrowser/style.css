@@ -1,0 +1,17 @@
+body {
+  background-color: beige; 
+}
+
+/* 3.7 강의를 위한 요소  */
+
+h1 { 
+  color: cornflowerblue;
+  transition: color .5s ease-in-out;
+}
+
+.clicked {
+  color: tomato;
+}
+.sexy-font {
+  font-family: 'Times New Roman', Times, serif;
+}
