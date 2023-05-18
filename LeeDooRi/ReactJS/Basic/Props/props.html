@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <!-- #4.0~ Props(부모 컴포넌트로부터 자식컴포넌트에 데이터를 보낼 수 있는 방법) -->
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <!-- ReactJS is a JS library, it makes application more interactive UI(like engine) -->
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- React-dom is a library or package, puts all React elements on the HTML body -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js">
+    // https://babeljs.io/docs/babel-standalone
+  </script>
+  <script type="text/babel">
+   function Btn({text, index}) {
+    return (
+        <button
+            style={{
+                backgroundColor: "tomato",
+                color: "white",
+                padding: "10px 20px",
+                border: 0,
+                borderRadius: 10,
+                fontSize: index === 1 ? 20 : 16
+        }}>{text}</button>
+    )
+}
+function App() {
+    return (
+        <div>
+            <Btn text="Save Changes" index={1}/>
+            <Btn text="Continue" index={2}/>
+        </div>
+    );
+}
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
