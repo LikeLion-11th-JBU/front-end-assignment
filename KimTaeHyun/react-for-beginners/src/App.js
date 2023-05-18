@@ -4,17 +4,16 @@ import Home from "./routes/Home";
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/hello">
+      <Routes>
+        <Route path="/abot-us">
           <h1>Hello</h1>
         </Route>
-        <Route path="/movie">
+        <Route path="/movie" element={<Detail />}>
           <Detail />
         </Route>
-        <Route path="/">
-          <Home />
+        <Route path="/" element={<Home />}>
         </Route>
-      </Switch>
+      </Routes>
     </Router>
   );
 }
