@@ -8,7 +8,7 @@ const TweetFactory = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [attachment, setAttachment] = useState("");
   const onSubmit = async (event) => {
-    if (nweet === "") {
+    if (tweet === "") {
         return;
       }
     event.preventDefault();
@@ -56,7 +56,7 @@ const TweetFactory = ({ userObj }) => {
       <div className="factoryInput__container">
         <input
           className="factoryInput__input"
-          value={nweet}
+          value={tweet}
           onChange={onChange}
           type="text"
           placeholder="What's on your mind?"
