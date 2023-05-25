@@ -1,6 +1,6 @@
 import { dbService } from "fbase";
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, getDocs, query, onSnapshot, orderBy } from "firebase/firestore";
+import { collection, addDoc, query, onSnapshot, orderBy } from "firebase/firestore";
 
 const Home = ({ userObj }) => {
     const [nweet, setNweet] = useState("");
@@ -21,7 +21,7 @@ const Home = ({ userObj }) => {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            const docRef = await addDoc(collection(dbService, "nweets"), {
+            await addDoc(collection(dbService, "nweets"), {
             text: nweet,
             createdAt: Date.now(),
             creatorId: userObj.uid,
