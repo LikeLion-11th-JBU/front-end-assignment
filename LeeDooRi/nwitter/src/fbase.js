@@ -1,11 +1,28 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import 'firebase/compat/firestore';
-import "firebase/database";
-import {getFirestore} from "firebase/firestore"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
+// import 'firebase/database';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
+import {
+  getFirestore,
+  addDoc,
+  collection,
+  query,
+  getDocs,
+} from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,13 +35,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-export const authService = getAuth(firebaseApp);
+const app = initializeApp(firebaseConfig);
+
+export const authService = getAuth();
+export const signIn = signInWithEmailAndPassword; //로그인 할때의 통신
+export const signup = createUserWithEmailAndPassword; // 가입할때 통신
+export const isAuthChange = onAuthStateChanged; //로그인이후 로그인 값이 있는지
+
 export const dbService = getFirestore();
+export const dbAddDoc = addDoc; // 명시된 데이터를 담은 새로운 document를 collection에 추가 document ID 자동으로 추가
+export const dbCollection = collection;
 
-export default firebaseApp;
-/**
- * reference : https://sukvvon.tistory.com/75 ,
-  https://nomadcoders.co/nwitter/lectures/1908/issues/1792
- */
-
+export {
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  signInWithPopup,
+  signOut,
+  query,
+  getDocs,
+};
