@@ -96,8 +96,9 @@ const Auth = () => {
         // ...
       });
   };
+  // (참고자료)firebase.google.com/docs/auth/web/github-auth?hl=ko&authuser=0
 
-  return (
+  https: return (
     <div>
       <form onSubmit={onSubmit}>
         <input
