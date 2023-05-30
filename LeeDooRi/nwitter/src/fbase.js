@@ -22,6 +22,8 @@ import {
   collection,
   query,
   getDocs,
+  onSnapshot,
+  orderBy,
 } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -53,4 +55,6 @@ export {
   signOut,
   query,
   getDocs,
+  onSnapshot,
+  orderBy,
 };

@@ -9,6 +9,7 @@ const Profile = () => {
     signOut(auth);
     navigate('/', { replace: true });
   };
-  return <button onClick={onLogOutClick}>Log Out</button>;};
+  return <button onClick={onLogOutClick}>Log Out</button>;
+};
 
 export default Profile;

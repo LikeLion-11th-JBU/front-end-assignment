@@ -1,104 +1,49 @@
-import React, { useState } from 'react';
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
+  authService,
   GithubAuthProvider,
-} from 'firebase/auth';
-import fbase from 'fbase';
+  GoogleAuthProvider,
+  signIn,
+  signInWithPopup,
+  signup,
+} from 'fbase';
+import React, { useState } from 'react';
 
 const Auth = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [form, setForm] = useState({ email: '', password: '' });
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState('');
-  const onChange = (event) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
-  };
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      let data;
-      const auth = getAuth();
-      if (newAccount) {
-        // Create Account
-        data = await createUserWithEmailAndPassword(auth, email, password);
-      } else {
-        // Log In
-        data = await signInWithEmailAndPassword(auth, email, password);
-      }
-      console.log(data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-  // 로그인 <-> 계정생성 전환
+  const onChange = ({ target: { name, value } }) =>
+    setForm({ ...form, [name]: value });
   const toggleAccount = () => setNewAccount((prev) => !prev);
+  const auth = authService;
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    let data;
 
-  // 이벤트 함수를 두개로 나누어 각각 다른 행동을 하도록 구성 
-  // 소셜 로그인 구현 (Google)
-  const onGoogleClick = async (event) => {
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
+    try {
+      if (newAccount) {
+        data = await signup(auth, form.email, form.password);
+      } else {
+        // login
+        data = await signIn(auth, form.email, form.password);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
   };
-  //소셜 로그인 구현 (Github)
-  const onGithubClick = async (event) => {
-    const auth = getAuth();
-    const provider = new GithubAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-        const credential = GithubAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GithubAuthProvider.credentialFromError(error);
-        // ...
-      });
+  const onSocialClick = async (e) => {
+    const {
+      target: { name },
+    } = e;
+    let provider;
+    if (name === 'google') {
+      provider = new GoogleAuthProvider();
+    } else if (name === 'github') {
+      provider = new GithubAuthProvider();
+    }
+    await signInWithPopup(authService, provider);
   };
-  // (참고자료)firebase.google.com/docs/auth/web/github-auth?hl=ko&authuser=0
-
-  https: return (
+  return (
     <div>
       <form onSubmit={onSubmit}>
         <input
@@ -106,7 +51,7 @@ const Auth = () => {
           type="email"
           placeholder="Email"
           required
-          value={email}
+          defaultValue={form.email}
           onChange={onChange}
         />
         <input
@@ -114,23 +59,27 @@ const Auth = () => {
           type="password"
           placeholder="Password"
           required
-          value={password}
+          defaultValue={form.password}
           onChange={onChange}
         />
         <input
           type="submit"
-          value={newAccount ? 'Create Account' : 'Sign In'}
+          value={newAccount ? 'Create Account' : 'Log In'}
+          onClick={toggleAccount}
         />
-        {error}
       </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? 'Sign In' : 'Create Account'}
-      </span>
+      {error && <div>{error}</div>}
+
       <div>
-        <button onClick={onGoogleClick}>Continue with Google</button>
-        <button onClick={onGithubClick}>Continue with Github</button>
+        <button name="google" onClick={onSocialClick}>
+          Continue with Google
+        </button>
+        <button name="github" onClick={onSocialClick}>
+          Continue with Github
+        </button>
       </div>
     </div>
   );
 };
+
 export default Auth;

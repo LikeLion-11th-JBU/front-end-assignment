@@ -1,45 +1,30 @@
-import React, { useState } from "react";
-import { HashRouter as Router, Route, Routes,} from "react-router-dom";
-import Auth from "routes/Auth";
-import Home from "routes/Home";
-import Profile from "routes/Profile";
-import Navigation from "components/Navigation";
+import React, { useState } from 'react';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Auth from 'routes/Auth';
+import Home from 'routes/Home';
+import Profile from 'routes/Profile';
+import Navigation from 'components/Navigation';
 
-
-
-const AppRouter = ({isLoggedIn}) =>  { 
+const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <Router>
       {isLoggedIn && <Navigation />}
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route 
-            exact path="/" element= {<Home />}>
-            </Route>          
-            <Route 
-            exact path="/profile" element= {<Profile />}>
-            </Route>          
+            <Route exact path="/" element={<Home userObj={userObj} />}></Route>
+            <Route exact path="/profile" element={<Profile />}></Route>
           </>
         ) : (
           <>
-          <Route 
-          exact path= "/" 
-          element={<Auth />
-          }>
-          </Route>
+            <Route exact path="/" element={<Auth />}></Route>
           </>
         )}
       </Routes>
     </Router>
-
-
-
   );
 };
 export default AppRouter;
-
-
 
 /* react hook 이란?
 
@@ -62,4 +47,4 @@ state와, 여러 React 기능을 사용할 수 있도록 만든 라이브러리
  * - https://projectlog.tistory.com/22
  * - https://velog.io/@seondal/Firebase-v9%EB%B6%80%ED%84%B0-%EB%8B%AC%EB%9D%BC%EC%A7%84-%EC%9D%B8%EC%A6%9D%EB%AA%A8%EB%93%88-%EC%82%AC%EC%9A%A9%EB%B2%95
  * 
- * */ 
+ * */
