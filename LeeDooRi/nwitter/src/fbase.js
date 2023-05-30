@@ -24,6 +24,9 @@ import {
   getDocs,
   onSnapshot,
   orderBy,
+  deleteDoc,
+  updateDoc,
+  doc,
 } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -57,4 +60,7 @@ export {
   getDocs,
   onSnapshot,
   orderBy,
+  deleteDoc,
+  updateDoc,
+  doc,
 };

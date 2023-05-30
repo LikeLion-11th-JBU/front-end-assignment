@@ -13,7 +13,6 @@ function App() {
       if (user) {
         setIsLoggedIn(true);
         setUserObj(user);
-        const uid = user.uid;
       } else {
         setIsLoggedIn(false);
       }
