@@ -28,7 +28,15 @@ import {
   updateDoc,
   doc,
 } from 'firebase/firestore';
+import {
+  getStorage,
+  ref,
+  uploadString,
+  getDownloadURL,
+  deleteObject,
 
+} from 'firebase/storage';
+// import { } from "@firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -64,3 +72,5 @@ export {
   updateDoc,
   doc,
 };
+
+export { getStorage, ref, uploadString, getDownloadURL, deleteObject }; // 이미지 업로드 firebase/storage
