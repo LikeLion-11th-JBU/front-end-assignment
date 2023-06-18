@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <!-- #4.0~ Props(부모 컴포넌트로부터 자식컴포넌트에 데이터를 보낼 수 있는 방법) -->
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <!-- ReactJS is a JS library, it makes application more interactive UI(like engine) -->
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- React-dom is a library or package, puts all React elements on the HTML body -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js">
+    // https://babeljs.io/docs/babel-standalone
+  </script>
+  <script type="text/babel">
+function Btn({text, changeValue}) {
+    return (
+        <button
+            onClick={changeValue}
+            style={{
+                backgroundColor: "tomato",
+                color: "white",
+                padding: "10px 20px",
+                border: 0,
+                borderRadius: 10,
+        }}>{text}</button>
+    )
+}
+function App() {
+    const [value, setValue] = React.useState("Save Changes")
+    const changeValue = () => setValue("Revert Changes")
+    return (
+        <div>
+            <Btn text={value} changeValue={changeValue}/>
+            <Btn text="Continue"/>
+        </div>
+    );
+}
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
+
+<!-- Save Changes 버튼을 클릭하면 Revert Changes 버튼으로 바뀌도록
+
+
+App()
+
+value 라는 state 를 이용해 버튼 상태 저장
+
+changeValue 는 Revert Changes 로 value 를 바꾸는 함수
+
+Btn 컴포넌트로 value 와 changeValue 를 넘겨준다.
+
+
+Btn 컴포넌트
+
+changeValue 함수를 받아와 버튼 onClick 에 적용
+
+
+커스텀 컴포넌트에 전달하는 onClick 함수는 이벤트 리스너가 아니다.
+
+HTML 요소에 넣어야 이벤트 리스너가 됨
+
+=> button 태그를 위한 이벤트 리스너가 아닌 Btn 컴포넌트를 위한 props 일 뿐 -->
