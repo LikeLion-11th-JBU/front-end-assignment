@@ -6,6 +6,7 @@ body {
     color: white;
     display: grid;
     gap: 5px;
+    grid-template-columns: min-content max-content;
     grid-auto-rows: 100px;
     margin-bottom: 30px;
   }
@@ -16,12 +17,3 @@ body {
   .item:nth-child(even) {
     background-color: #3498db;
   }
-
-  .grid:nth-child(1) {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  }
-  
-  .grid:nth-child(2) {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
-  /* first-child(), last-child() codes are disabled in Live-server extention, so replace nth-child() property in ".grid"  */
