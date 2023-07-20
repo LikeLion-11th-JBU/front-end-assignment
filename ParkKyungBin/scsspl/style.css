@@ -6,27 +6,20 @@ body {
     display: grid;
     gap: 5px;
     height: 50vh;
-    /* 부모영역에 사용되며 이름과 비율을 설정해줘야 한다. 
-    grid-template 에서 repeat 는 사용 ㄴㄴ*/
-    grid-template:
-        "header header header header" 1fr
-        "content content content nav" 2fr
-        "footer footer footer footer" 1fr / 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    place-items: stretch center;
   }
   
   .header {
     background-color: #2ecc71;
-    grid-area: header;
   }
   .content {
     background-color: #3498db;
-    grid-area: content;
   }
   .nav {
     background-color: #8e44ad;
-    grid-area: nav;
   }
   .footer {
     background-color: #f39c12;
-    grid-area: footer;
   }
