@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <!-- #3 State (useState 전 function, ReactDOM으로 re-rendering)-->
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script> 
+   <!-- ReactJS is a JS library, it makes application more interactive UI(like engine) -->
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- React-dom is a library or package, puts all React elements on the HTML body -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js">
+    // https://babeljs.io/docs/babel-standalone
+  </script>
+  <script type="text/babel">
+    const root = document.getElementById("root")
+    let counter = 0;
+    function countup() {
+      counter = counter + 1;
+      render();
+      //페이지를 다시 랜더해준다(countup이 반영된 화면 출력)
+    }
+    function render() {
+      ReactDOM.render(<App />,root,); 
+    }
+    function App () { 
+      return (
+        <div>
+          <h3>Total Clicks: {counter}</h3>
+          <button onClick = {countup}>Click me!</button>
+        </div>
+      );
+    }
+    render();
+    ReactDOM.render(<App />,root,);
+    // render = React 요소들을 HTML로 만들어 배치한다 (유저에게 보여준다.)
+  </script>
+</html> 
+<!-- 
+리액트에서는 바닐라 자바스크립트와는 다르게 HTML에서 시작하는 것이 아닌 자바스크립트 코드로 HTML을 작성함으로 유저에게 보여질 내용을 컨트롤하고 업데이트 할 수 있다.  -->
