@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <!-- #2 Basic -->
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script> 
+   <!-- ReactJS is a JS library, it makes application more interactive UI(like engine) -->
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- React-dom is a library or package, puts all React elements on the HTML body -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js">
+    // https://babeljs.io/docs/babel-standalone
+  </script>
+  <script type="text/babel">
+          //type="text/babel" 을 넣어줘야 JSX로 작성된 코드를 브라우저가 이해할 수 있다.
+        const root = document.getElementById('root');
+ 
+        //Title에 arrow function을 사용해 함수로 변경해준다.
+        const Title = () => (
+            <h3 id="title" onMouseOver={() => console.log('hi')}>
+                Hello my mane is title
+            </h3>
+        );
+        const NewBtn = () => (
+            <button id="btn" onClick={() => console.log('mouse clicked!')} style={{ backgroundColor: 'tomato',}}>
+                click me!
+            </button>
+        );
+ 
+        /* container 부분도 JSX 방식으로 불러오기 */
+        //const container = React.createElement('div', null, [Title, NewBtn]); // -> 컨테이너 리액트 기본식
+ 
+        /*
+        JSX에서 Title과 같은 태그를 가져오기 위해서는 해당 변수를 함수로 변경해줘야 한다.
+        = () => ( ); 는 function Btn() { return ( ); } 와 같음
+ 
+        const Title = ( ... ); ➜
+        const Title = () => ( ... );
+        */
+ 
+        const Container = () => (
+          <div>
+            <button>테스트 버튼</button> 
+            <Title />
+            <NewBtn />
+            </div>
+            );
+
+            // < /> 는 우리가 만든 컴포넌트를 복사 붙혀넣기 한다는 의미
+            // 우리가 만든 컴포넌트는 반드시 UpperCase로 해줘야 한다.
+            // lowerCase로하면 웹은 HTML 태그라고 착각한다.
+
+         ReactDOM.render(<Container />, root);
+    // render = React 요소들을 HTML로 만들어 배치한다 (유저에게 보여준다.)
+  </script>
+</html> 
+<!-- 리액트에서는 바닐라 자바스크립트와는 다르게 HTML에서 시작하는 것이 아닌 자바스크립트 코드로 HTML을 작성함으로 유저에게 보여질 내용을 컨트롤하고 업데이트 할 수 있다.  -->
