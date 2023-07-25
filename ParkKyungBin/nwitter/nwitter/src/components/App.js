@@ -5,7 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 function App() {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
-  
+  // null값 
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
