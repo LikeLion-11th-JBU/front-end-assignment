@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <span>Total clicks: 0</span>
+        <button id="btn">Click me</button>
+    </body>
+    <script>
+        /**
+         * 고전적인 방식으로 구현한 카운터
+         * 코드의 양이 너무 많다.
+        */
+        let counter = 0;
+        const button = document.getElementById("btn")
+        const span = document.querySelector("span")
+        function handleClick() {
+            counter += 1
+            span.innerText = `Total clicks: ${counter}`
+        }
+        button.addEventListener("click", handleClick)
+    </script>
+</html>
